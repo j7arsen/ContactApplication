@@ -1,0 +1,77 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.j7arsen.contact.application"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    //kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.core:core-ktx:${rootProject.ext.coreKtx}"
+
+    //coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${rootProject.ext.corouitine}"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${rootProject.ext.corouitine}"
+
+    //support
+    implementation "androidx.appcompat:appcompat:${rootProject.ext.appCompatX}"
+    implementation "androidx.constraintlayout:constraintlayout:${rootProject.ext.constraint}"
+    implementation "androidx.recyclerview:recyclerview:${rootProject.ext.recyclerview}"
+    implementation "com.google.android.material:material:${rootProject.ext.material}"
+
+    //test
+    testImplementation "junit:junit:${rootProject.ext.junit}"
+    androidTestImplementation "androidx.test.ext:junit:${rootProject.ext.testJunit}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${rootProject.ext.testEspresso}"
+
+    //DI
+    implementation "org.koin:koin-core:${rootProject.ext.koin}"
+    implementation "org.koin:koin-androidx-viewmodel:${rootProject.ext.koin}"
+    implementation "org.koin:koin-androidx-scope:${rootProject.ext.koin}"
+
+    ///lifecycle
+    implementation "androidx.lifecycle:lifecycle-extensions:${rootProject.ext.lifecycle}"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:${rootProject.ext.lifecycle}"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${rootProject.ext.lifecycle}"
+
+    //Navigation
+    implementation "ru.terrakok.cicerone:cicerone:${rootProject.ext.cicerone}"
+
+    //Room
+    implementation "androidx.room:room-runtime:${rootProject.ext.room}"
+    kapt "androidx.room:room-compiler:${rootProject.ext.room}"
+    implementation "androidx.room:room-ktx:${rootProject.ext.room}"
+
+    //image loading
+    implementation "com.squareup.picasso:picasso:${rootProject.ext.picasso}"
+    implementation "jp.wasabeef:picasso-transformations:${rootProject.ext.picassoTransformation}"
+    implementation "jp.co.cyberagent.android.gpuimage:gpuimage-library:${rootProject.ext.gpuImage}"
+
+}
