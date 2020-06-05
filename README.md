@@ -1,2 +1,9 @@
 # ContactApplication
-Koin использовал впервые
+Library:
+Android Library
+Kotlin Coroutines
+Koin
+ViewModel
+Cicerone
+Room
+Picasso
