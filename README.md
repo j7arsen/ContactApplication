@@ -1,6 +1,6 @@
 # ContactApplication
 Library:
-Android Library,
+Android Libraries,
 Kotlin Coroutines,
 Koin,
 ViewModel,
