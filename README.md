@@ -1,1 +1,2 @@
 # ContactApplication
+Koin использовал впервые
