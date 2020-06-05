@@ -1,5 +1,5 @@
 # ContactApplication
-Libraries:
+Used Libraries:
 Android Libraries,
 Kotlin Coroutines,
 Koin,
