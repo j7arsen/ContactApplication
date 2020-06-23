@@ -14,10 +14,10 @@ import com.j7arsen.contact.application.global.message.SystemMessageNotifier
 import com.j7arsen.contact.application.global.utils.ResourceProvider
 import com.j7arsen.contact.application.global.utils.error.ErrorData
 import com.j7arsen.contact.application.global.utils.error.ErrorHandler
-import kotlinx.coroutines.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onStart
-import kotlin.coroutines.CoroutineContext
+import kotlinx.coroutines.launch
 
 class ContactListViewModel(
     private val errorHandler: ErrorHandler,
@@ -27,7 +27,7 @@ class ContactListViewModel(
     private val eventDispatcher: EventDispatcher,
     private val getContactListUseCase: GetContactListUseCase,
     private val deleteContactUseCase: DeleteContactUseCase
-) : BaseViewModel(), EventDispatcher.EventListener, CoroutineScope {
+) : BaseViewModel(), EventDispatcher.EventListener {
 
     private val _screenState: MutableLiveData<ContactListViewModelState> = MutableLiveData()
     val screenState: LiveData<ContactListViewModelState> = _screenState
@@ -39,14 +39,7 @@ class ContactListViewModel(
         MutableLiveData()
     val deleteContactDialogState: LiveData<DeleteContactDialogState> = _deleteContactDialogState
 
-    private val job: Job = SupervisorJob()
-    private val handler = CoroutineExceptionHandler { _, exception ->
-        _screenState.value =
-            ContactListViewModelState.ErrorLoading(errorHandler.getError(exception))
-    }
-
-    override val coroutineContext: CoroutineContext
-        get() = handler + job + Dispatchers.Main
+    override var exceptionHandler: (Throwable) -> Unit = { errorHandler.getError(it) }
 
     init {
         this.eventDispatcher.addEventListener(EventType.UPDATE_CONTACT, listener = this)
@@ -103,9 +96,6 @@ class ContactListViewModel(
 
     override fun onCleared() {
         super.onCleared()
-        if (coroutineContext.isActive) {
-            coroutineContext.cancel()
-        }
         eventDispatcher.removeEventListener(this)
     }
 

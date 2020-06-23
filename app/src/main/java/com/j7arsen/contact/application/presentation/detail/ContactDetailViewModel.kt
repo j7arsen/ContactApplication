@@ -17,10 +17,12 @@ import com.j7arsen.contact.application.global.utils.error.ErrorData
 import com.j7arsen.contact.application.global.utils.error.ErrorHandler
 import com.j7arsen.contact.application.global.utils.notifyObserver
 import com.j7arsen.contact.application.presentation.detail.validator.ContactDetailValidator
-import kotlinx.coroutines.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onStart
-import kotlin.coroutines.CoroutineContext
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
 
 class ContactDetailViewModel(
     private val errorHandler: ErrorHandler,
@@ -32,7 +34,7 @@ class ContactDetailViewModel(
     private val updateContactUseCase: UpdateContactUseCase,
     private val validatorUtil: ValidatorUtil,
     private val contactId: Long
-) : BaseViewModel(), CoroutineScope {
+) : BaseViewModel() {
 
     private val _screenState: MutableLiveData<ContactDetailState> = MutableLiveData()
     val screenState: LiveData<ContactDetailState> = _screenState
@@ -48,14 +50,7 @@ class ContactDetailViewModel(
         MutableLiveData()
     val updateContactDialogState: LiveData<UpdateContactDialogState> = _updateContactDialogState
 
-    private val job: Job = SupervisorJob()
-    private val handler = CoroutineExceptionHandler { _, exception ->
-        _screenState.value =
-            ContactDetailState.ErrorLoading(errorHandler.getError(exception))
-    }
-
-    override val coroutineContext: CoroutineContext
-        get() = handler + job + Dispatchers.Main
+    override var exceptionHandler: (Throwable) -> Unit = { errorHandler.getError(it) }
 
     init {
         loadContactDetail()
@@ -153,7 +148,7 @@ class ContactDetailViewModel(
         if (mode != null) {
             if (mode == ContactDetailMode.EDIT) {
                 _contactDetailMode.value = ContactDetailMode.INIT
-               _contactModel.notifyObserver()
+                _contactModel.notifyObserver()
             } else {
                 _contactDetailMode.value = ContactDetailMode.EDIT
             }
