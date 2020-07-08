@@ -1,15 +1,18 @@
+# kmp-app-template
+Contains basic classes for project based on KotlinMultiplatform
+
 #Firebase Crashlytics
 =====================
 Step 1: Create a Firebase Project
 * In the Firebase console click "Add Project", then enter "Project name".
-------------------------------------------------------------------------
+=====================
 Step 2: Register your apps with Firebase.
 * After you have a Firebase project, you can add your Android and iOS apps to it.
 * In the center of the project overview page click the Android/IOS icon to launch the setup workflow.
 * Enter your app's package name in the Android package name field.(Android) / Enter your app's bundle ID in the iOS bundle ID field.(IOS)
-* (Optional) Enter other app information: App nickname and Debug signing certificate SHA-1.() / Enter other app information: App nickname and App Store ID.(IOS)
+* (Optional) Enter other app information: App nickname and Debug signing certificate SHA-1.(Android) / Enter other app information: App nickname and App Store ID.(IOS)
 * Register app
---------------
+=====================
 Step 3: Add a configuration file to the project
 * Add the Firebase Android configuration file to your app:
   * Click Download google-services.json to obtain your Firebase Android config file (google-services.json).
