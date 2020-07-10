@@ -23,7 +23,7 @@ Step 3: Add a configuration file to the project
 
 #Versions
 ===============
-* Open terminal and execute commands:
- * bash bump_version.sh {version_type}, where {version_type} - build/patch/minor/major
-*I f error occurs - "invalid arithmetic operation"
-  * chmod +x {bash_file}.sh, where {bash_file} - bump_version.sh
+Open terminal and execute commands:
+    * bash bump_version.sh {version_type}, where {version_type} - build/patch/minor/major
+If error occurs - "invalid arithmetic operation"
+    * chmod +x {bash_file}.sh, where {bash_file} - bump_version.sh
