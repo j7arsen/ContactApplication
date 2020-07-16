@@ -50,9 +50,9 @@ Cases for Android
 --------------
 * Application - Single Activity - Navigator(AppNavigator class) in activity is the navigator in the application
 * Each flow screen has its own navigator(AppNavigator class)
-* When to do local navigation(for example, in tab):
+* Make local navigation(for example, in tab):
   * Extend flow screen
-  * Override function from NavigationMessageHandler interface, where by NavigationScreen makes navigation at the application or local level
+  * Override function from NavigationMessageHandler interface, where by NavigationScreen type makes navigation at the application or local level
 
 
 
