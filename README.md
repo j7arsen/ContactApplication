@@ -20,8 +20,9 @@ Step 3: Add a configuration file to the project
 * Add the Firebase IOS configuration file to your app:
   * Click Download GoogleService-Info.plist to obtain your Firebase iOS config file (GoogleService-Info.plist).
   * Move your config file into the root of your Xcode project. Select to add the config file to all targets.
-===========
+
 #Navigation
+===============
 Screens are navigated in PresentationModel class. The NavigationRouter class used for navigation.
 Each screen should be extended from NavigationScreen class and must be initialized in NavigationScreens class.
 Supported Navigation Messages:
