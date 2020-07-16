@@ -23,8 +23,8 @@ Step 3: Add a configuration file to the project
 
 #Navigation
 ===============
-Screens are navigated in PresentationModel class. The NavigationRouter class used for navigation.
-Each screen should be extended from NavigationScreen class and must be initialized in NavigationScreens class.
+Screens are navigated in PresentationModel class. The NavigationRouter class used for navigation.\
+Each screen should be extended from NavigationScreen class and must be initialized in NavigationScreens class.\
 Supported Navigation Messages:
 * AddTabs - add tab screens
 * AttachTab - add tab
