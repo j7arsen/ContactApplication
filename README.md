@@ -25,7 +25,9 @@ Step 3: Add a configuration file to the project
 ===============
 Screens are navigated in PresentationModel class. The NavigationRouter class used for navigation.\
 Each screen should be extended from NavigationScreen class and must be initialized in NavigationScreens class.\
+
 Supported Navigation Messages:
+--------------
 * AddTabs - add tab screens
 * AttachTab - add tab
 * NavigateTo - open new screen
@@ -39,9 +41,13 @@ Supported Navigation Messages:
 * StartFlow - open new flow screen
 * NewRootFlow -  clear all screens and open new flow screen as root
 * FinishFlow - remove flow screen from the chain and return to the previous screen
+
 Handling navigation messages
+--------------
 * For processing navigation messages need to implement NavigationMessageHandler interface in Activity/Fragment/Controller
+
 Cases for Android
+--------------
 * Application - Single Activity - Navigator(AppNavigator class) in activity is the navigator in the application
 * Each flow screen has its own navigator(AppNavigator class)
 * When to do local navigation(for example, in tab)
