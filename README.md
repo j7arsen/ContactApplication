@@ -23,8 +23,8 @@ Step 3: Add a configuration file to the project
 
 #Navigation
 ===============
-Screens are navigated in PresentationModel class. The NavigationRouter class used for navigation.\
-Each screen should be extended from NavigationScreen class and must be initialized in NavigationScreens class.\
+Screens are navigated in PresentationModel class. The NavigationRouter class used for navigation.
+Each screen should be extended from NavigationScreen class and must be initialized in NavigationScreens class.
 
 Supported Navigation Messages:
 --------------
@@ -50,9 +50,9 @@ Cases for Android
 --------------
 * Application - Single Activity - Navigator(AppNavigator class) in activity is the navigator in the application
 * Each flow screen has its own navigator(AppNavigator class)
-* When to do local navigation(for example, in tab)
- * Extend flow screen
- * Override function from NavigationMessageHandler interface, where by NavigationScreen makes navigation at the application or local level
+* When to do local navigation(for example, in tab):
+  * Extend flow screen
+  * Override function from NavigationMessageHandler interface, where by NavigationScreen makes navigation at the application or local level
 
 
 
